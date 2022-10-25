@@ -46,5 +46,8 @@ normPoint (Point x1 y1) = x1 + y1
 distance :: Point -> Point -> Int
 distance (Point x1 y1) (Point x2 y2) = normPoint(minusPoint(Point x1 y1) (Point x2 y2)) * (-1)
 
-oneStep :: Direction -> Point
-oneStep North = (Point 0 1) 
+oneStep :: Direction -> point
+oneStep North = (Point 0 1)
+oneStep East = (Point 1 0)
+oneStep South = (Point 0 -1)
+oneStep West = (Point -1 0)
