@@ -1,6 +1,8 @@
 module Orders where
 
 import Data.List
+import Data.Map (Map)
+import qualified Data.Map as Map
 
 type Customer = String
 type Product = String
@@ -13,13 +15,16 @@ data Order = Order Customer Product Double
 data Delivery = Delivery Product Double
     deriving (Show)
 
+frequencyMap :: Ord a => [a] -> Map a Int
+frequencyMap xs = Map.unionsWith (+) [Map.singleton x 1 | x <- xs]
+
 frequency :: [Char] -> [(Char, Int)]
 frequency ws = [(head g, length g) | g <- group (sort ws)]
 
 -- All customers who submitted an order, with the number of different
 -- products each of them ordered.
 numProducts :: [Order] -> [(Customer, Int)]
-numProducts orders = [(head g, length g) | g <- group (sort orders)]
+numProducts orders = undefined
 
 -- All products that have been ordered, with the total quantity of each.
 productQuantities :: [Order] -> [(Product, Double)]
