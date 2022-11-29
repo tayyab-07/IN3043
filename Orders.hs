@@ -24,11 +24,14 @@ frequency ws = [(head g, length g) | g <- group (sort ws)]
 -- All customers who submitted an order, with the number of different
 -- products each of them ordered.
 numProducts :: [Order] -> [(Customer, Int)]
-numProducts orders = undefined
+numProducts [(Order c p n)] = [(head o, length o) | o <- group (sort [c])]
 
 -- All products that have been ordered, with the total quantity of each.
 productQuantities :: [Order] -> [(Product, Double)]
-productQuantities orders = undefined
+productQuantities [(Order c p n)] = undefined
+
+productQuantities1 :: Ord [orders] => [Order] -> Map orders Int 
+productQuantities1 [(Order c p n)] = Map.unionsWith (+) [Map.singleton o 1 | o <- [p]]
 
 -- The customers and products for which the customer has ordered
 -- more than half the total quantity for that product.
