@@ -34,11 +34,20 @@ outputContents = do
    sequence_ [cdFileContents ef | ef <- f]
 
 repeatIO :: Int -> IO a -> IO ()
-repeatIO x io = do
-   take x (iterate io 1)
+repeatIO 0 io = return ()
+repeatIO n io = do 
+   io
+   repeatIO (n-1) io
 
 
-
+linesPalindrome :: IO()
+linesPalindrome = do
+   putStrLn "Write a palindrome: "
+   n <- getLine
+   if n == (reverse n) then
+      putStrLn "Well Done! That is a palindrome"
+   else 
+      putStrLn "That isnt a palindrome" >> linesPalindrome
 
 
 
