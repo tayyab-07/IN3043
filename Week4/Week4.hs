@@ -50,7 +50,7 @@ frequency :: Ord a => [a] -> [(a, Int)]
 frequency a = [ (head x, length x) | x <- group(sort a)]
 
 palindromic :: [Char] -> Bool
-palindromic p = length [ x | (x, n) <- frequency xs, odd n] <= 1
+palindromic p = length [ x | (x, n) <- frequency p, odd n] <= 1
 
 
 
